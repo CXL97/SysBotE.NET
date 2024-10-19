@@ -28,20 +28,20 @@ public sealed class SwitchSocketAsync : SwitchSocket, ISwitchConnectionAsync
     {
         if (Connected)
         {
-            Log("Already connected prior, skipping initial connection.");
+            Log("之前已经连接，跳过初始连接。");
             return;
         }
 
-        Log("Connecting to device...");
+        Log("正在连接到设备...");
         IAsyncResult result = Connection.BeginConnect(Info.IP, Info.Port, null, null);
         bool success = result.AsyncWaitHandle.WaitOne(5000, true);
         if (!success || !Connection.Connected)
         {
             InitializeSocket();
-            throw new Exception("Failed to connect to device.");
+            throw new Exception("无法连接到设备。");
         }
         Connection.EndConnect(result);
-        Log("Connected!");
+        Log("已连接!");
         Label = Name;
     }
 
@@ -56,16 +56,16 @@ public sealed class SwitchSocketAsync : SwitchSocket, ISwitchConnectionAsync
 
     public override void Disconnect()
     {
-        Log("Disconnecting from device...");
+        Log("正在与设备断开连接...");
         IAsyncResult result = Connection.BeginDisconnect(false, null, null);
         bool success = result.AsyncWaitHandle.WaitOne(5000, true);
         if (!success || Connection.Connected)
         {
             InitializeSocket();
-            throw new Exception("Failed to disconnect from device.");
+            throw new Exception("无法断开与设备的连接。");
         }
         Connection.EndDisconnect(result);
-        Log("Disconnected! Resetting Socket.");
+        Log("断线了! 重新设置插座。");
         InitializeSocket();
     }
 
