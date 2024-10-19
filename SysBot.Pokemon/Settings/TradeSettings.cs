@@ -12,39 +12,39 @@ public class TradeSettings : IBotStateSettings, ICountSettings
     private const string TradeConfig = nameof(TradeConfig);
     private const string Dumping = nameof(Dumping);
     private const string Counts = nameof(Counts);
-    public override string ToString() => "Trade Bot Settings";
+    public override string ToString() => "交易机器人设置";
 
-    [Category(TradeConfig), Description("Time to wait for a trade partner in seconds.")]
+    [Category(TradeConfig), Description("等待交换对象的时间（秒）")]
     public int TradeWaitTime { get; set; } = 30;
 
-    [Category(TradeConfig), Description("Max amount of time in seconds pressing A to wait for a trade to process.")]
+    [Category(TradeConfig), Description("按A键等待交易处理的最大时间（秒）")]
     public int MaxTradeConfirmTime { get; set; } = 25;
 
-    [Category(TradeCode), Description("Minimum Link Code.")]
+    [Category(TradeCode), Description("最小连接密码(0-99999999)")]
     public int MinTradeCode { get; set; } = 0;
 
-    [Category(TradeCode), Description("Maximum Link Code.")]
+    [Category(TradeCode), Description("最大连接密码(0-99999999)")]
     public int MaxTradeCode { get; set; } = 9999_9999;
 
-    [Category(Dumping), Description("Dump Trade: Dumping routine will stop after a maximum number of dumps from a single user.")]
+    [Category(Dumping), Description("Dump交易：Dump程序将在单个用户达到最大Dump次数后停止。")]
     public int MaxDumpsPerTrade { get; set; } = 20;
 
-    [Category(Dumping), Description("Dump Trade: Dumping routine will stop after spending x seconds in trade.")]
+    [Category(Dumping), Description("Dump交易：在交易中等待x秒后，Dump程序将停止。")]
     public int MaxDumpTradeTime { get; set; } = 180;
 
-    [Category(Dumping), Description("Dump Trade: If enabled, Dumping routine will output legality check information to the user.")]
+    [Category(Dumping), Description("Dump交易的合法性检查(F/T)。")]
     public bool DumpTradeLegalityCheck { get; set; } = true;
 
-    [Category(TradeConfig), Description("When enabled, the screen will be turned off during normal bot loop operation to save power.")]
+    [Category(TradeConfig), Description("当启用后，在正常的机器人操作循环中，屏幕将被关闭，以节省电力。")]
     public bool ScreenOff { get; set; }
 
-    [Category(TradeCode), Description("Maximum pokemons of single trade. Batch mode will be closed if this configuration is less than 1")]
+    [Category(TradeCode), Description("单次交易的最大宝可梦数量。如果此配置小于1，则批量模式将被关闭。")]
     public int MaxPkmsPerTrade { get; set; } = 1;
     
-    [Category(TradeConfig), Description("When enabled, disallows requesting Pokémon from outside of their original context.")]
+    [Category(TradeConfig), Description("当启用时，不允许请求不在其版本中的宝可梦。")]
     public bool DisallowNonNatives { get; set; } = true;
 
-    [Category(TradeConfig), Description("When enabled, disallows requesting Pokémon if they have a HOME Tracker.")]
+    [Category(TradeConfig), Description("启用后，如果宝可梦拥有HOME追踪码，则不允许请求该宝可梦。")]
     public bool DisallowTracked { get; set; } = true;
 
     /// <summary>
@@ -59,49 +59,49 @@ public class TradeSettings : IBotStateSettings, ICountSettings
     private int _completedClones;
     private int _completedDumps;
 
-    [Category(Counts), Description("Completed Surprise Trades")]
+    [Category(Counts), Description("已完成的魔法交换")]
     public int CompletedSurprise
     {
         get => _completedSurprise;
         set => _completedSurprise = value;
     }
 
-    [Category(Counts), Description("Completed Link Trades (Distribution)")]
+    [Category(Counts), Description("已完成的连接交换（派送）")]
     public int CompletedDistribution
     {
         get => _completedDistribution;
         set => _completedDistribution = value;
     }
 
-    [Category(Counts), Description("Completed Link Trades (Specific User)")]
+    [Category(Counts), Description("已完成的连接交换（特定用户）")]
     public int CompletedTrades
     {
         get => _completedTrades;
         set => _completedTrades = value;
     }
 
-    [Category(Counts), Description("Completed Seed Check Trades")]
+    [Category(Counts), Description("已完成的seed检索交易")]
     public int CompletedSeedChecks
     {
         get => _completedSeedChecks;
         set => _completedSeedChecks = value;
     }
 
-    [Category(Counts), Description("Completed Clone Trades (Specific User)")]
+    [Category(Counts), Description("已完成的克隆交易（特定用户）")]
     public int CompletedClones
     {
         get => _completedClones;
         set => _completedClones = value;
     }
 
-    [Category(Counts), Description("Completed Dump Trades (Specific User)")]
+    [Category(Counts), Description("已完成的Dump交易（特定用户）")]
     public int CompletedDumps
     {
         get => _completedDumps;
         set => _completedDumps = value;
     }
 
-    [Category(Counts), Description("When enabled, the counts will be emitted when a status check is requested.")]
+    [Category(Counts), Description("当启用后，当要求进行状态检查时，将发出计数。")]
     public bool EmitCountsOnStatusCheck { get; set; }
 
     public void AddCompletedTrade() => Interlocked.Increment(ref _completedTrades);
