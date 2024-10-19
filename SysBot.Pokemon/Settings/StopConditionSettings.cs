@@ -9,45 +9,45 @@ namespace SysBot.Pokemon;
 public class StopConditionSettings
 {
     private const string StopConditions = nameof(StopConditions);
-    public override string ToString() => "Stop Condition Settings";
+    public override string ToString() => "停止条件设置";
 
-    [Category(StopConditions), Description("Stops only on Pokémon of this species. No restrictions if set to \"None\".")]
+    [Category(StopConditions), Description("只停在这个种类的宝可梦上。如果设置为 \"None \"则没有限制。")]
     public Species StopOnSpecies { get; set; }
 
-    [Category(StopConditions), Description("Stops only on Pokémon with this FormID. No restrictions if left blank.")]
+    [Category(StopConditions), Description("只停在具有形态ID的宝可梦上。如果留空则没有限制。")]
     public int? StopOnForm { get; set; }
 
-    [Category(StopConditions), Description("Stop only on Pokémon of the specified nature.")]
+    [Category(StopConditions), Description("只停在指定性格的宝可梦上")]
     public Nature TargetNature { get; set; } = Nature.Random;
 
-    [Category(StopConditions), Description("Minimum accepted IVs in the format HP/Atk/Def/SpA/SpD/Spe. Use \"x\" for unchecked IVs and \"/\" as a separator.")]
+    [Category(StopConditions), Description("最小可接受的个体值格式为HP/Atk/Def/SpA/SpD/Spe 使用 \"x\"表示不检查的个体值，使用 \"/\"作为分隔符。")]
     public string TargetMinIVs { get; set; } = "";
 
-    [Category(StopConditions), Description("Maximum accepted IVs in the format HP/Atk/Def/SpA/SpD/Spe. Use \"x\" for unchecked IVs and \"/\" as a separator.")]
+    [Category(StopConditions), Description("最大可接受的个体值格式为HP/Atk/Def/SpA/SpD/Spe 使用 \"x\"表示不检查的个体值，使用 \"/\"作为分隔符。")]
     public string TargetMaxIVs { get; set; } = "";
 
-    [Category(StopConditions), Description("Selects the shiny type to stop on.")]
+    [Category(StopConditions), Description("选择宝可梦的闪光类型来停止")]
     public TargetShinyType ShinyTarget { get; set; } = TargetShinyType.DisableOption;
 
-    [Category(StopConditions), Description("Allows filtering for min or max size to stop on.")]
+    [Category(StopConditions), Description("允许停止过滤最小或最大。")]
     public TargetHeightType HeightTarget { get; set; } = TargetHeightType.DisableOption;
     
-    [Category(StopConditions), Description("Stop only on Pokémon that have a mark.")]
+    [Category(StopConditions), Description("只停在有证章的宝可梦上")]
     public bool MarkOnly { get; set; }
 
-    [Category(StopConditions), Description("List of marks to ignore separated by commas. Use the full name, e.g. \"Uncommon Mark, Dawn Mark, Prideful Mark\".")]
+    [Category(StopConditions), Description("需要忽略的证章列表，用逗号分隔。使用全称，例如：\"Uncommon Mark, Dawn Mark, Prideful Mark\"。")]
     public string UnwantedMarks { get; set; } = "";
 
-    [Category(StopConditions), Description("Holds Capture button to record a 30 second clip when a matching Pokémon is found by EncounterBot or Fossilbot.")]
+    [Category(StopConditions), Description("当遭遇机器人或化石机器人(仅在剑/盾中起作用)在发现匹配的宝可梦后，按住截图按钮，录制30秒的片段。")]
     public bool CaptureVideoClip { get; set; }
 
-    [Category(StopConditions), Description("Extra time in milliseconds to wait after an encounter is matched before pressing Capture for EncounterBot or Fossilbot.")]
+    [Category(StopConditions), Description("当遭遇机器人或化石机器人(仅在剑/盾中起作用)在发现匹配的宝可梦后，按下截图按钮之前要等待的额外时间（毫秒）。")]
     public int ExtraTimeWaitCaptureVideo { get; set; } = 10000;
 
-    [Category(StopConditions), Description("If set to TRUE, matches both ShinyTarget and TargetIVs settings. Otherwise, looks for either ShinyTarget or TargetIVs match.")]
+    [Category(StopConditions), Description("如果设置为True，则同时匹配闪光类型和目标个体值设置。否则，只寻找目标闪光类型或目标个体值的宝可梦。")]
     public bool MatchShinyAndIV { get; set; } = true;
 
-    [Category(StopConditions), Description("If not empty, the provided string will be prepended to the result found log message to Echo alerts for whomever you specify. For Discord, use <@userIDnumber> to mention.")]
+    [Category(StopConditions), Description("如果不为空，则提供的字符串将添加在您指定对象的Echo警报结果日志消息中。对于Discord用户，使用<@userIDnumber>来提及。")]
     public string MatchFoundEchoMention { get; set; } = string.Empty;
 
     public static bool EncounterFound<T>(T pk, int[] targetminIVs, int[] targetmaxIVs, StopConditionSettings settings, IReadOnlyList<string>? marklist) where T : PKM
