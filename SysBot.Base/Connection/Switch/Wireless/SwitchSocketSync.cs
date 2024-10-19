@@ -15,16 +15,16 @@ public sealed class SwitchSocketSync(IWirelessConnectionConfig cfg) : SwitchSock
 {
     public override void Connect()
     {
-        Log("Connecting to device...");
+        Log("正在连接到设备...");
         IAsyncResult result = Connection.BeginConnect(Info.IP, Info.Port, null, null);
         bool success = result.AsyncWaitHandle.WaitOne(5000, true);
         if (!success || !Connection.Connected)
         {
             InitializeSocket();
-            throw new Exception("Failed to connect to device.");
+            throw new Exception("无法连接到设备。");
         }
         Connection.EndConnect(result);
-        Log("Connected!");
+        Log("已连接!");
         Label = Name;
     }
 
@@ -39,16 +39,16 @@ public sealed class SwitchSocketSync(IWirelessConnectionConfig cfg) : SwitchSock
 
     public override void Disconnect()
     {
-        Log("Disconnecting from device...");
+        Log("正在断开设备连接...");
         IAsyncResult result = Connection.BeginDisconnect(false, null, null);
         bool success = result.AsyncWaitHandle.WaitOne(5000, true);
         if (!success || Connection.Connected)
         {
             InitializeSocket();
-            throw new Exception("Failed to disconnect from device.");
+            throw new Exception("无法断开与设备的连接。");
         }
         Connection.EndDisconnect(result);
-        Log("Disconnected!");
+        Log("连接已断开!");
         InitializeSocket();
     }
 
