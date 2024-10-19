@@ -988,12 +988,12 @@ public class PokeTradeBotSWSH(PokeTradeHub<PK8> hub, PokeBotState Config) : Poke
         var tradeswsh = new LegalityAnalysis(cln);
         if (tradeswsh.Valid)
         {
-            Log($"Pokemon is valid, use trade partnerInfo");
+            Log($"宝可梦有效，使用交易伙伴信息");
             await SetBoxPokemon(cln, 0, 0, token, sav).ConfigureAwait(false);
         }
         else
         {
-            Log($"Pokemon not valid, do nothing to trade Pokemon");
+            Log($"宝可梦无效，对交易宝可梦不做任何操作");
         }
 
         return tradeswsh.Valid;
