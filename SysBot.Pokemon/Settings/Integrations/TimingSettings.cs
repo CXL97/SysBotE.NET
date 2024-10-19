@@ -8,75 +8,75 @@ public class TimingSettings
     private const string CloseGame = nameof(CloseGame);
     private const string Raid = nameof(Raid);
     private const string Misc = nameof(Misc);
-    public override string ToString() => "Extra Time Settings";
+    public override string ToString() => "额外时间设置";
 
     // Opening the game.
-    [Category(OpenGame), Description("Extra time in milliseconds to wait for profiles to load when starting the game.")]
+    [Category(OpenGame), Description("启动游戏时等待配置文件加载的额外时间（毫秒）")]
     public int ExtraTimeLoadProfile { get; set; }
 
-    [Category(OpenGame), Description("Extra time in milliseconds to wait to check if DLC is usable.")]
+    [Category(OpenGame), Description("检查DLC是否可用的额外等待时间（毫秒）")]
     public int ExtraTimeCheckDLC { get; set; }
 
-    [Category(OpenGame), Description("Extra time in milliseconds to wait before clicking A in title screen.")]
+    [Category(OpenGame), Description("在标题屏幕上点击A之前要等待的额外时间（毫秒）")]
     public int ExtraTimeLoadGame { get; set; } = 5000;
 
-    [Category(OpenGame), Description("[BDSP] Extra time in milliseconds to wait for the overworld to load after the title screen.")]
+    [Category(OpenGame), Description("[珍钻]在标题屏幕之后，等待主世界加载的额外时间（毫秒）")]
     public int ExtraTimeLoadOverworld { get; set; } = 3000;
 
     // Closing the game.
-    [Category(CloseGame), Description("Extra time in milliseconds to wait after pressing HOME to minimize the game.")]
+    [Category(CloseGame), Description("按HOME键最小化游戏后等待的额外时间（毫秒）")]
     public int ExtraTimeReturnHome { get; set; }
 
-    [Category(CloseGame), Description("Extra time in milliseconds to wait after clicking to close the game.")]
+    [Category(CloseGame), Description("点击关闭游戏后要等待的额外时间（毫秒）")]
     public int ExtraTimeCloseGame { get; set; }
 
     // Raid-specific timings.
-    [Category(Raid), Description("[RaidBot] Extra time in milliseconds to wait for the raid to load after clicking on the den.")]
+    [Category(Raid), Description("[团体战机器人]点击巢穴后，等待团体战加载的额外时间（毫秒）")]
     public int ExtraTimeLoadRaid { get; set; }
 
-    [Category(Raid), Description("[RaidBot] Extra time in milliseconds to wait after clicking \"Invite Others\" before locking into a Pokémon.")]
+    [Category(Raid), Description("[团体战机器人] 点击 \"邀请其他人 \"后，在确定一个宝可梦之前，需要等待额外的时间（毫秒）")]
     public int ExtraTimeOpenRaid { get; set; }
 
-    [Category(Raid), Description("[RaidBot] Extra time in milliseconds to wait before closing the game to reset the raid.")]
+    [Category(Raid), Description("[团体战机器人]关闭游戏重置团体战前的额外等待时间（毫秒）")]
     public int ExtraTimeEndRaid { get; set; }
 
-    [Category(Raid), Description("[RaidBot] Extra time in milliseconds to wait after accepting a friend.")]
+    [Category(Raid), Description("[团体战机器人]接受朋友后的额外等待时间（毫秒）")]
     public int ExtraTimeAddFriend { get; set; }
 
-    [Category(Raid), Description("[RaidBot] Extra time in milliseconds to wait after deleting a friend.")]
+    [Category(Raid), Description("[团体战机器人]删除好友后的额外等待时间（毫秒）")]
     public int ExtraTimeDeleteFriend { get; set; }
 
     // Miscellaneous settings.
-    [Category(Misc), Description("[SWSH/SV] Extra time in milliseconds to wait after clicking + to connect to Y-Comm (SWSH) or L to connect online (SV).")]
+    [Category(Misc), Description("[剑盾/朱紫] 点击 \"+\"连接到剑盾通讯界面或点击 \"L \"进行朱紫在线联网后的额外等待时间（毫秒）")]
     public int ExtraTimeConnectOnline { get; set; }
 
-    [Category(Misc), Description("Number of times to attempt reconnecting to a socket connection after a connection is lost. Set this to -1 to try indefinitely.")]
+    [Category(Misc), Description("连接失败后尝试重新连接到套接字连接的次数. 将其设置为-1则进行无限次地尝试。")]
     public int ReconnectAttempts { get; set; } = 30;
 
-    [Category(Misc), Description("Extra time in milliseconds to wait between attempts to reconnect. Base time is 30 seconds.")]
+    [Category(Misc), Description("在尝试重新连接之间等待的额外时间（毫秒）")]
     public int ExtraReconnectDelay { get; set; }
 
-    [Category(Misc), Description("[BDSP] Extra time in milliseconds to wait for the overworld to load after leaving the Union Room.")]
+    [Category(Misc), Description("[珍钻]在离开联机室后，等待主世界加载的额外时间（毫秒）")]
     public int ExtraTimeLeaveUnionRoom { get; set; } = 1000;
 
-    [Category(Misc), Description("[BDSP] Extra time in milliseconds to wait for the Y Menu to load at the start of each trade loop.")]
+    [Category(Misc), Description("[珍钻]在每个交易循环开始时等待Y菜单加载的额外时间（毫秒）")]
     public int ExtraTimeOpenYMenu { get; set; } = 500;
 
-    [Category(Misc), Description("[BDSP] Extra time in milliseconds to wait for the Union Room to load before trying to call for a trade.")]
+    [Category(Misc), Description("[珍钻]在尝试调用交易之前，等待联机室加载的额外时间（毫秒）")]
     public int ExtraTimeJoinUnionRoom { get; set; } = 500;
 
-    [Category(Misc), Description("[SV] Extra time in milliseconds to wait for the Poké Portal to load.")]
+    [Category(Misc), Description("[朱紫] 等待宝可入口站加载的额外时间（毫秒）")]
     public int ExtraTimeLoadPortal { get; set; } = 1000;
 
-    [Category(Misc), Description("Extra time in milliseconds to wait for the box to load after finding a trade.")]
+    [Category(Misc), Description("找到交易后等待盒子加载的额外时间（毫秒）")]
     public int ExtraTimeOpenBox { get; set; } = 1000;
 
-    [Category(Misc), Description("Time to wait after opening the keyboard for code entry during trades.")]
+    [Category(Misc), Description("交易中打开键盘输入密码的等待时间（毫秒）")]
     public int ExtraTimeOpenCodeEntry { get; set; } = 1000;
 
-    [Category(Misc), Description("Time to wait after each keypress when navigating Switch menus or entering Link Code.")]
+    [Category(Misc), Description("在浏览交换菜单或输入连接密码时，每次按键后需要等待的时间（毫秒）")]
     public int KeypressTime { get; set; } = 200;
 
-    [Category(Misc), Description("Enable this to decline incoming system updates.")]
+    [Category(Misc), Description("启用此功能可拒绝接收到的系统更新。")]
     public bool AvoidSystemUpdate { get; set; }
 }
