@@ -14,7 +14,7 @@ public abstract class RoutineExecutor<T>(IConsoleBotManaged<IConsoleConnection, 
     public readonly IConsoleConnectionAsync Connection = Config.CreateAsynchronous();
     public readonly T Config = (T)Config;
 
-    public string LastLogged { get; private set; } = "Not Started";
+    public string LastLogged { get; private set; } = "机器人未启动";
     public DateTime LastTime { get; private set; } = DateTime.Now;
 
     public void ReportStatus() => LastTime = DateTime.Now;
@@ -35,7 +35,7 @@ public abstract class RoutineExecutor<T>(IConsoleBotManaged<IConsoleConnection, 
     public async Task RunAsync(CancellationToken token)
     {
         Connection.Connect();
-        Log("Initializing connection with console...");
+        Log("正在初始化与控制台的连接...");
         await InitialStartup(token).ConfigureAwait(false);
         await MainLoop(token).ConfigureAwait(false);
         Connection.Disconnect();
