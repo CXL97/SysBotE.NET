@@ -61,7 +61,7 @@ public abstract class PokeRoutineExecutor<T>(IConsoleBotManaged<IConsoleConnecti
         Directory.CreateDirectory(dir);
         var fn = Path.Combine(dir, Util.CleanFileName(pk.FileName));
         File.WriteAllBytes(fn, pk.DecryptedPartyData);
-        LogUtil.LogInfo($"Saved file: {fn}", "Dump");
+        LogUtil.LogInfo($"已保存文件: {fn}", "Dump");
     }
 
     public async Task<bool> TryReconnect(int attempts, int extraDelay, SwitchProtocol protocol, CancellationToken token)
@@ -73,7 +73,7 @@ public abstract class PokeRoutineExecutor<T>(IConsoleBotManaged<IConsoleConnecti
             // If ReconnectAttempts is set to -1, this should allow it to reconnect (essentially) indefinitely.
             for (int i = 0; i < (uint)attempts; i++)
             {
-                LogUtil.LogInfo($"Trying to reconnect... ({i + 1})", Connection.Label);
+                LogUtil.LogInfo($"正在尝试重新连接... ({i + 1})", Connection.Label);
                 Connection.Reset();
                 if (Connection.Connected)
                     break;
