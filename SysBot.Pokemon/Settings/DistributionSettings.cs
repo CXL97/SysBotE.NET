@@ -35,12 +35,12 @@ public class DistributionSettings : ISynchronizationSetting
 
     // Synchronize
 
-    [Category(Synchronize), Description("Link Trade: Using multiple distribution bots -- all bots will confirm their trade code at the same time. When Local, the bots will continue when all are at the barrier. When Remote, something else must signal the bots to continue.")]
+    [Category(Synchronize), Description("派送交换:使用多个派送机器人 —— 所有机器人将同时确认他们的交换密码。当本地时，当所有的机器人都到达屏障时，机器人将继续。当远程时，必须有其他东西发出信号让机器人继续。")]
     public BotSyncOption SynchronizeBots { get; set; } = BotSyncOption.LocalSync;
 
-    [Category(Synchronize), Description("Link Trade: Using multiple distribution bots -- once all bots are ready to confirm trade code, the Hub will wait X milliseconds before releasing all bots.")]
+    [Category(Synchronize), Description("派送交换:使用多个派送机器人 —— 一旦所有机器人都准备好确认交换密码，中心将等待X毫秒，然后释放所有机器人。")]
     public int SynchronizeDelayBarrier { get; set; }
 
-    [Category(Synchronize), Description("Link Trade: Using multiple distribution bots -- how long (seconds) a bot will wait for synchronization before continuing anyways.")]
+    [Category(Synchronize), Description("派送交换:使用多个派送机器人 —— 在继续之前，机器人将等待多长时间(秒)后同步。")]
     public double SynchronizeTimeout { get; set; } = 90;
 }
